@@ -67,31 +67,31 @@ body {
 .a-yC { transform: translateY(-50%); }
 .a-yR { transform: translateY(-100%); }
 
-@font-face {	font-family: "Titillium Web";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/OT/TW1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Titillium Web";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/OT/TW4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Titillium Web";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/OT/TW7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Titillium Web";	src: url('fnt/OT/TW1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Titillium Web";	src: url('fnt/OT/TW4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Titillium Web";	src: url('fnt/OT/TW7.ttf') format('truetype');	font-weight: 700;	}
 
-@font-face {	font-family: "Noto Sans AR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/AR1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans AR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/AR4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans AR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/AR7.ttf') format('truetype');	font-weight: 700;	}
-@font-face {	font-family: "Noto Sans CN";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/CN1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans CN";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/CN4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans CN";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/CN7.ttf') format('truetype');	font-weight: 700;	}
-@font-face {	font-family: "Noto Sans JP";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/JP1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans JP";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/JP4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans JP";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/JP7.ttf') format('truetype');	font-weight: 700;	}
-@font-face {	font-family: "Noto Sans KR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/KR1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans KR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/KR4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans KR";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/KR7.ttf') format('truetype');	font-weight: 700;	}
-@font-face {	font-family: "Noto Sans LA";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/LA1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans LA";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/LA4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans LA";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/LA7.ttf') format('truetype');	font-weight: 700;	}
-@font-face {	font-family: "Noto Sans TW";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/TW1.ttf') format('truetype');	font-weight: 100;	}
-@font-face {	font-family: "Noto Sans TW";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/TW4.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "Noto Sans TW";	src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/NS/TW7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans AR";	src: url('fnt/NS/AR1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans AR";	src: url('fnt/NS/AR4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans AR";	src: url('fnt/NS/AR7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans CN";	src: url('fnt/NS/CN1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans CN";	src: url('fnt/NS/CN4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans CN";	src: url('fnt/NS/CN7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans JP";	src: url('fnt/NS/JP1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans JP";	src: url('fnt/NS/JP4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans JP";	src: url('fnt/NS/JP7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans KR";	src: url('fnt/NS/KR1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans KR";	src: url('fnt/NS/KR4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans KR";	src: url('fnt/NS/KR7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans LA";	src: url('fnt/NS/LA1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans LA";	src: url('fnt/NS/LA4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans LA";	src: url('fnt/NS/LA7.ttf') format('truetype');	font-weight: 700;	}
+@font-face {	font-family: "Noto Sans TW";	src: url('fnt/NS/TW1.ttf') format('truetype');	font-weight: 100;	}
+@font-face {	font-family: "Noto Sans TW";	src: url('fnt/NS/TW4.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "Noto Sans TW";	src: url('fnt/NS/TW7.ttf') format('truetype');	font-weight: 700;	}
 
-@font-face {	font-family: "SP_BKU";			src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/SP/BKU.ttf') format('truetype');	font-weight: 400;	}
-@font-face {	font-family: "SP_OHU";			src: url('https://github.com/FunnyParadox/webCDN/raw/refs/heads/main/FelixUTAU/fnt/SP/OHU.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "SP_BKU";			src: url('fnt/SP/BKU.ttf') format('truetype');	font-weight: 400;	}
+@font-face {	font-family: "SP_OHU";			src: url('fnt/SP/OHU.ttf') format('truetype');	font-weight: 400;	}
 
 .t-f1 { font-family: "Noto Sans LA", "Noto Sans JP", "Noto Sans TW", "Noto Sans CN", "Noto Sans KR", "Noto Sans AR", sans-serif; }
 .t-f2 { font-family: monospace; }
