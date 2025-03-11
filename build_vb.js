@@ -16,131 +16,151 @@ const data = loadJSON("vb_data.json");
 
 if (!data.length) { throw new Error('NO VOICEBANKS FOUND!'); }
 
-var main_grid = document.createElement('div');
-main_grid.className = 'div_center flex-container flx_col0 flx_aliC flx_cntr';
-main_grid.id = 'main_vb';
-
 const play__icon = '>';
 const pause_icon = '~';
 const stop__icon = '|';
 
-const grid_vb_cont = Array.from({ length: data.length }, () => document.createElement('div'));
-for (var i = 0; i < data.length; i++)
+const grid_VB = Array.from({ length: data.length }, () => create_elem('div', 'MAIN', "", 'grid_VB'));
+for (var i = 0; i < grid_VB.length; i++)
 {
 	var val = data[i];
 	val.audio_cursor = 0;
-
-	grid_vb_cont[i].className = `flex-container flx_ali0 flx_col0 vb_all`;
-	grid_vb_cont[i].id = val.name;
-
-	const __div = Array.from({length:5}, (_,i) => { const div=document.createElement('div'); div.className=`flex-container flx_row0 flx_aliC vb_${i+1}_0`; return div; });
+	
+	const grid_VB_SEPR_0 = create_elem('div', 'SEPR_1', "", 'grid_VB_SEPR');
+	grid_VB[i].appendChild(grid_VB_SEPR_0);
 
 	if (val.name.length)
 	{
-		var __title = document.createElement('p');
+		const grid_VB_NAME = create_elem('div', 'NAME', "", 'grid_VB_NAME');
+		var __title = create_elem('p', 'title', "<b>" + val.name, 'skewed t-sL t-c1 t-w9 t-f1', 'position: absolute; transform: translateY(-50%);');
 
-		__title.innerHTML = "<br><b>" + val.name;
-		__title.className = 'skewed t-sL t-c1 t-w9 t-f1 vb_1_1';
-		__title.style = "top: min(4vh, 4vw);";
-		__title.id = "title";
-
-		grid_vb_cont[i].appendChild(__div[0]);
-		grid_vb_cont[i].querySelector(".vb_1_0").appendChild(__title);
+		grid_VB_NAME.appendChild(__title);
+		grid_VB[i].appendChild(grid_VB_NAME);
 	}
 	if (val.desc.length)
 	{
-		var __desc = document.createElement('p');
-		var __desc_line = document.createElement('div');
+		const grid_VB_DESC = create_elem('div', 'DESC', "", 'grid_VB_DESC');
+		var __desc = create_elem('div', 'desc', val.desc, 't-aC t-sM t-c1 t-w1 t-f1');
 
-		__desc.innerHTML = val.desc;
-		__desc.className = 't-aC t-sM t-c1 t-w1 t-f1 vb_2_1';
-		__desc.style = "top: max(-.314vh, -.314vw);";
-		__desc.id = "desc";
-
-		__desc_line.style = "background-color: #FFFFFFFF; height: min(.1412vw, .1412vh); width: 100%; border-radius: 100%;";
-
-		__div[1].className = __div[1].className.replace("flx_row0", "flx_col0");
-		grid_vb_cont[i].appendChild(__div[1]);
-		grid_vb_cont[i].querySelector(".vb_2_0").appendChild(__desc);
-		grid_vb_cont[i].querySelector(".vb_2_0").appendChild(__desc_line);
-	}	
-	if (is_dictionary(val.recording))
-	{
-		var __language = document.createElement('p');
-		var __method = document.createElement('p');
-		var __pitch_append = document.createElement('p');
-		var __software = document.createElement('p');
-		
-		__language.innerHTML = "Language<br>> " + val.recording.language + " <";
-		__language.className = 't-aC t-sM t-c1 t-w1 t-f1 vb_3_1';
-		__language.id = "language";
-		
-		__method.innerHTML = "Record Method<br>> " + val.recording.method + " <";
-		__method.className = 't-aC t-sM t-c1 t-w1 t-f1 vb_3_2';
-		__method.id = "method";
-		
-		__pitch_append.innerHTML = "Pitch / Appends<br>> " + val.recording.pitch_append + " <";
-		__pitch_append.className = 't-aC t-sM t-c1 t-w1 t-f1 vb_3_3';
-		__pitch_append.id = "pitch_append";
-		
-		__software.innerHTML = "Software<br>> " + val.recording.software + " <";
-		__software.className = 't-aC t-sM t-c1 t-w1 t-f1 vb_3_3';
-		__software.id = "software";
-		
-		grid_vb_cont[i].appendChild(__div[2]);
-		grid_vb_cont[i].querySelector(".vb_3_0").appendChild(__language);
-		grid_vb_cont[i].querySelector(".vb_3_0").appendChild(__method);
-		grid_vb_cont[i].querySelector(".vb_3_0").appendChild(__pitch_append);
-		grid_vb_cont[i].querySelector(".vb_3_0").appendChild(__software);
+		grid_VB_DESC.appendChild(__desc);
+		grid_VB[i].appendChild(grid_VB_DESC);
+		grid_VB[i].appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: min(1.1vw, 1.1vh);'));
 	}
-	if (val.audio.length)
+	if (is_dictionary(val.recording) >= 3)
 	{
-		var __name = document.createElement('button');
-		var __play = document.createElement('button');
-		var __stop = document.createElement('button');
+		const grid_VB_DATA = create_elem('div', 'DATA', "", 'grid_VB_DATA');
 
-		__div[3].className += ' flx_cntr';
+		const grid_VB_LANG = create_elem('div', 'LANG', "", 'grid_VB_LANG');
+		const grid_VB_RECM = create_elem('div', 'RECM', "", 'grid_VB_RECM');
+		const grid_VB_SOFT = create_elem('div', 'SOFT', "", 'grid_VB_SOFT');
 		
-		val.audio_cursor = Math.max(0, Math.min(val.audio_cursor, val.audio.length - 1));
-
-		__name.innerHTML = val.audio[val.audio_cursor].name;
-		__name.setAttribute('onclick', `change_audio(1, "${i}")`);
-		__name.className = 'unselectable t-aC t-sM t-cA t-w7 t-f1 vb_4_1';
-		__name.id = "name";
-
-		__play.innerHTML = play__icon;
-		__play.setAttribute('onclick', `play_audio("${i}")`);
-		__play.className = 'unselectable t-aC t-sM t-cA t-w7 t-f1 vb_4_2';
-		__play.id = "play";
-
-		__stop.innerHTML = stop__icon;
-		__stop.setAttribute('onclick', `play_audio("${i}", 1)`);
-		__stop.className = 'unselectable t-aC t-sM t-cA t-w7 t-f1 vb_4_3';
-		__stop.id = "stop";
-
-		for (var j = 0; j < val.audio.length; j++)
-		{	val.audio[j].obj = new Audio(val.audio[j].link);	}
+		const __language = create_elem('p', 'language', "<b>Language</b><br>> " + val.recording.language + " <", 't-aC t-sM t-c1 t-w1 t-f1');
+		const __method = create_elem('p', 'method', "<b>Record Method</b><br>> " + val.recording.method + " <", 't-aC t-sM t-c1 t-w1 t-f1');
+		const __software = create_elem('p', 'software', "<b>Software</b><br>> " + val.recording.software + " <", 't-aC t-sM t-c1 t-w1 t-f1');
 		
-		grid_vb_cont[i].appendChild(__div[3]);
-		grid_vb_cont[i].querySelector(".vb_4_0").appendChild(__name);
-		grid_vb_cont[i].querySelector(".vb_4_0").appendChild(__play);
-		grid_vb_cont[i].querySelector(".vb_4_0").appendChild(__stop);
+		grid_VB_LANG.appendChild(__language);
+		grid_VB_RECM.appendChild(__method);
+		grid_VB_SOFT.appendChild(__software);
+
+		grid_VB_DATA.appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; top: min(1.5vw, 1.5vh); height: min(.4vw, .4vh); background-color:rgba(255, 255, 255, 0.25);'));
+
+		grid_VB_DATA.appendChild(grid_VB_LANG);
+		grid_VB_DATA.appendChild(grid_VB_RECM);
+		grid_VB_DATA.appendChild(grid_VB_SOFT);
+		grid_VB_DATA.appendChild(create_elem('div', 'RLTV', "", 'grid_VB_LANG', 'position: relative;'));
+
+		grid_VB_DATA.appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; top: max(-1.5vw, -1.5vh); height: min(.4vw, .4vh); background-color:rgba(255, 255, 255, 0.25);'));
+
+		grid_VB[i].appendChild(grid_VB_DATA);
+
+		const __append_D = val.recording.pitch_append;
+		const __append_L = is_dictionary(__append_D);
+		var __pitch_A = [];
+		var __pitch_L = 0;
+		if (__append_L > 0)
+		{
+			const grid_VB_PTAB = create_elem('div', 'PTAB', "", 'grid_VB_PTAB');
+			const __append_K = Object.keys(__append_D);
+
+			var grid_VB_APPEND = [];
+			for (var j = 0; j < __append_L; j++)
+			{
+				__pitch_A = __append_D[__append_K[j]];
+				__pitch_L = __pitch_A.length;
+
+				const __append_name_size = 110/3;
+
+				if (!j)
+				{
+					grid_VB_SHOWDATA_0 = create_elem('div', 'showdata_0', "<b>Appends", 't-aC t-sM t-c1 t-w1 t-f1', 'position: absolute; left: 0%; --wid: ' + __append_name_size + '; --hei: 5; width: calc(var(--wid) * 1%); height: calc(var(--hei) * min(1vw, 1vh));');
+					grid_VB_PTAB.appendChild(grid_VB_SHOWDATA_0);
+
+					if (__pitch_L > 0)
+					{
+						grid_VB_SHOWDATA_0.appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: 100%; left: 100%; width: min(.2vw, .2vh); transform: translate(-50%, -80%); background-color:rgba(255, 255, 255, 0.25);'));
+						grid_VB_SHOWDATA_1 = create_elem('div', 'showdata_1', "<b>Pitches", 't-aC t-sM t-c1 t-w1 t-f1', 'position: relative; left: ' + __append_name_size + '%; --wid: ' + (100 - __append_name_size) + '; --hei: 5; width: calc(var(--wid) * 1%); height: calc(var(--hei) * min(1vw, 1vh));');
+						grid_VB_PTAB.appendChild(grid_VB_SHOWDATA_1);
+					}
+				}
+				grid_VB_APPEND[j] = [];
+				grid_VB_APPEND[j][0] = create_elem('div', 'append_' + j, __append_K[j], 't-aC t-sM t-c1 t-w1 t-f1', 'position: ' + ((0 == __pitch_L) ? 'relative' : 'absolute') + '; left: 0%; --wid: ' + __append_name_size + '; --hei: 5; width: calc(var(--wid) * 1%); height: calc(var(--hei) * min(1vw, 1vh));');
+				grid_VB_PTAB.appendChild(grid_VB_APPEND[j][0]);
+				
+				if (0 != __pitch_L) grid_VB_APPEND[j][0].appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: 100%; left: 100%; width: min(.2vw, .2vh); transform: translate(-50%, -80%); background-color:rgba(255, 255, 255, 0.25);'));
+
+				for (var l = 1; l <= __pitch_L; l++)
+				{
+					grid_VB_APPEND[j][l] = create_elem('div', 'append_' + j + '_pitch_' + l - 1, __pitch_A[l - 1], 't-aC t-sM t-c1 t-w1 t-f1', 'position: ' + ((l == __pitch_L) ? 'relative' : 'absolute') + '; left: ' + (__append_name_size + ((l) / (__pitch_L + 2) * (100 - __append_name_size))) + '%; --wid: ' + ((100 - __append_name_size) / (__pitch_L + 1)) + '; --hei: 5; width: calc(var(--wid) * 1%); height: calc(var(--hei) * min(1vw, 1vh));');
+					
+					grid_VB_PTAB.appendChild(grid_VB_APPEND[j][l]);
+				}
+			}
+			grid_VB_PTAB.appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: min(1.1vw, 1.1vh);'));
+			grid_VB[i].appendChild(grid_VB_PTAB);
+		}
 	}
-	else val.audio_cursor = -1;
+	if (val.video.length)
+	{
+		grid_VB[i].appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: min(1.1vw, 1.1vh);'));
+
+		const grid_VB_EMBD = create_elem('div', 'EMBD', "", 'grid_VB_EMBD debug_border1');
+		const grid_VB_VIDC = create_elem('div', 'VIDC', "", 'debug_border2', 'position: absolute; left: calc(100% - calc(var(--hei) * min(16vw, 16vh) / 9)); width: calc(var(--hei) * min(16vw, 16vh) / 9); height: calc(var(--hei) * min(1vw, 1vh));');
+
+		var grid_VB_VID = [];
+
+		grid_VB_VID[0] = create_elem('iframe', 'VID0', "", "", "border: none; padding: 0; margin: 0;", "100%", "100%", "https://www.youtube.com/embed/" + val.video[0].video_id);
+		grid_VB_VID[0].frameborder = "0";
+
+		grid_VB_VIDC.appendChild(grid_VB_VID[0]);
+		grid_VB_EMBD.appendChild(grid_VB_VIDC);
+		grid_VB[i].appendChild(grid_VB_EMBD);
+	}
 	if (val.link != null && val.link.length && val.link != "SOON" && val.link != "COMING SOON")
 	{
-		var __download = document.createElement('button');
-		
-		__download.innerHTML = "DOWNLOAD・" + compress_size(val.size);
-		__download.onclick = "window.location.href='https://" + val.link + "';";
-		__download.className = 'unselectable t-aC t-sM t-cA t-w7 t-f1 vb_5_1';
-		
-		grid_vb_cont[i].appendChild(__div[4]);
-		grid_vb_cont[i].querySelector(".vb_5_0").appendChild(__download);
+		const grid_VB_DOWN = create_elem('div', 'DOWN', "", 'grid_VB_DOWN debug_border2');
+		grid_VB[i].appendChild(grid_VB_DOWN);	
 	}
-	main_grid.appendChild(grid_vb_cont[i]);
+	
+	const grid_VB_SEPR_1 = create_elem('div', 'SEPR_0', "", 'grid_VB_SEPR');
+	grid_VB[i].appendChild(grid_VB_SEPR_1);
+
+	
+	document.getElementById("MAIN_VB_CONTAINER").appendChild(create_elem('div', 'SEPR_END', "", 'grid_VB_SEPR'));
+	document.getElementById("MAIN_VB_CONTAINER").appendChild(grid_VB[i]);
 }
-document.body.appendChild(main_grid);
+
+function create_elem(type = 'div', id = NaN, text = "", class_name = NaN, style = NaN, width = NaN, height = NaN, src = NaN)
+{
+	const elem = document.createElement(type);
+	if (id != NaN) elem.id = id;
+	if (text != "") elem.innerHTML = text;
+	if (class_name != NaN) elem.className = class_name;
+	if (style != NaN) elem.style = style;
+	if (width != NaN) elem.width = width;
+	if (height != NaN) elem.height = height;
+	if (src != NaN) elem.src = src;
+	return elem;
+}
 
 function play_audio(voicebank, stop = false)
 {
@@ -151,18 +171,18 @@ function play_audio(voicebank, stop = false)
 	{
 		if (audio.paused)
 		{
-			grid_vb_cont[voicebank].querySelector("#play").innerHTML = pause_icon;
+			grid_VB[voicebank].querySelector("#play").innerHTML = pause_icon;
 			audio.play();
 		}
 		else
 		{
-			grid_vb_cont[voicebank].querySelector("#play").innerHTML = play__icon;
+			grid_VB[voicebank].querySelector("#play").innerHTML = play__icon;
 			audio.pause();
 		}
 	}
 	else
 	{
-		grid_vb_cont[voicebank].querySelector("#play").innerHTML = play__icon;
+		grid_VB[voicebank].querySelector("#play").innerHTML = play__icon;
 		audio.pause();
 		audio.currentTime = 0;
 	}
@@ -174,10 +194,10 @@ function change_audio(move, voicebank)
 	data[voicebank].audio[data[voicebank].audio_cursor].obj.pause();
 	data[voicebank].audio_cursor = (data[voicebank].audio_cursor + move) % data[voicebank].audio.length;
 	if (data[voicebank].audio_cursor < 0) data[voicebank].audio_cursor += data[voicebank].audio.length;
-	grid_vb_cont[voicebank].querySelector("#name").innerHTML = data[voicebank].audio[data[voicebank].audio_cursor].name
-	grid_vb_cont[voicebank].querySelector("#play").innerHTML = play__icon;
+	grid_VB[voicebank].querySelector("#name").innerHTML = data[voicebank].audio[data[voicebank].audio_cursor].name
+	grid_VB[voicebank].querySelector("#play").innerHTML = play__icon;
 }
 
 function compress_size(size) { return size / Math.pow(1000, Math.floor(Math.log10(size) / 3)) + ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][Math.floor(Math.log10(size) / 3)]; }
 
-function is_dictionary(obj) { return (typeof obj === 'object' && obj !== null && !Array.isArray(obj)) ? Object.keys(val.recording).length : -1; }
+function is_dictionary(obj) { return (typeof obj === 'object' && obj !== null && !Array.isArray(obj)) ? Object.keys(obj).length : -1; }

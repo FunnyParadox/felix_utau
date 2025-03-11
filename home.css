@@ -29,13 +29,22 @@ body {
 	left: 0;
 	top: 0;
 }
-.debug_border1 { border: #FFFFFFFF solid min(0.25vw, 0.25vh); }
-.debug_border2 { border: #FF0000FF solid min(0.35vw, 0.35vh); }
-.debug_border3 { border: #00FF00FF solid min(0.25vw, 0.25vh); }
-.debug_border4 { border: #0000FFFF solid min(0.30vw, 0.30vh); }
-.debug_border5 { border: #00FFFFFF solid min(0.25vw, 0.25vh); }
-.debug_border6 { border: #FF00FFFF solid min(0.35vw, 0.35vh); }
-.debug_border7 { border: #FFFF00FF solid min(0.30vw, 0.30vh); }
+.debug_border0 { background-color: #FF000040; }
+.debug_border1 { background-color: #00FF0040; }
+.debug_border2 { background-color: #0000FF40; }
+.debug_border3 { background-color: #00FFFF40; }
+.debug_border4 { background-color: #FF00FF40; }
+.debug_border5 { background-color: #FFFF0040; }
+.debug_border6 { background-color: #FF800050; }
+.debug_border7 { background-color: #00FF8050; }
+.debug_border8 { background-color: #8000FF50; }
+.debug_border9 { background-color: #FF008050; }
+.debug_borderA { background-color: #80FF0050; }
+.debug_borderB { background-color: #0080FF50; }
+.debug_borderC { background-color: #FF808060; }
+.debug_borderD { background-color: #80FF8060; }
+.debug_borderE { background-color: #8080FF60; }
+.debug_borderF { background-color: #FFFFFF40; }
 .flex-container { position: relative; display: flex; }
 .flx_ali0 { align-items: start; }
 .flx_ali1 { align-items: end; }
