@@ -123,8 +123,8 @@ for (var i = 0; i < grid_VB.length; i++)
 	{
 		grid_VB[i].appendChild(create_elem('div', 'DSEP', "", '', 'position: relative; height: min(1.1vw, 1.1vh);'));
 
-		const grid_VB_EMBD = create_elem('div', 'EMBD', "", 'grid_VB_EMBD debug_border1');
-		const grid_VB_VIDC = create_elem('div', 'VIDC', "", 'debug_border2', 'position: absolute; left: calc(100% - calc(var(--hei) * min(16vw, 16vh) / 9)); width: calc(var(--hei) * min(16vw, 16vh) / 9); height: calc(var(--hei) * min(1vw, 1vh));');
+		const grid_VB_EMBD = create_elem('div', 'EMBD', "", 'grid_VB_EMBD debug_border2');
+		const grid_VB_VIDC = create_elem('div', 'VIDC', "", "", 'position: absolute; left: calc(100% - calc(var(--hei) * min(16vw, 16vh) / 9)); width: calc(var(--hei) * min(16vw, 16vh) / 9); height: calc(var(--hei) * min(1vw, 1vh));');
 
 		var grid_VB_VID = [];
 
@@ -135,10 +135,18 @@ for (var i = 0; i < grid_VB.length; i++)
 		grid_VB_EMBD.appendChild(grid_VB_VIDC);
 		grid_VB[i].appendChild(grid_VB_EMBD);
 	}
-	if (val.link != null && val.link.length && val.link != "SOON" && val.link != "COMING SOON")
+	if (val.link != null && val.link.length && val.link != "" && val.link != "SOON" && val.link != "COMING SOON")
 	{
-		const grid_VB_DOWN = create_elem('div', 'DOWN', "", 'grid_VB_DOWN debug_border2');
-		grid_VB[i].appendChild(grid_VB_DOWN);	
+		const grid_VB_DOWN = create_elem('div', 'DOWN', "", 'grid_VB_DOWN');
+		const __download_container = create_elem('div', 'DCON', "", 'grid_VB_DCON flex_container flx_ali1 flx_arnd debug_border1');
+		const __download_button = create_elem('a', 'DBTN', "DOWNLOAD・" + compress_size(val.size), 't-aC t-sM t-c1 t-w7 t-f1');
+		
+		__download_button.href = val.link;
+		__download_button.download = val.filename;
+
+		__download_container.appendChild(__download_button);
+		grid_VB_DOWN.appendChild(__download_container);
+		grid_VB[i].appendChild(grid_VB_DOWN);
 	}
 	
 	const grid_VB_SEPR_1 = create_elem('div', 'SEPR_0', "", 'grid_VB_SEPR');

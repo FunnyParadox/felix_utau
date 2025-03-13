@@ -31,7 +31,7 @@
 {
 	--ist_SIZE: -30;
 	position: relative;
-	top: min(.1412vw, .1412vh);
+	top: max(-.1412vw, -.1412vh);
 	animation: infinite_scroll_text 1s linear infinite;
 }
 @keyframes infinite_scroll_text
@@ -54,6 +54,7 @@
 .grid_VB_EMBD { position: relative; left: 0%; --hei: 38; width: 100%; height: calc(var(--hei) * min(1vw, 1vh)); }
 
 .grid_VB_DOWN { position: relative; left: 0%; --hei: 10; width: 100%; height: calc(var(--hei) * min(1vw, 1vh)); }
+.grid_VB_DCON { position: relative; left: 0%; height: 100%; width: 100%; }
 
 #copyright
 {

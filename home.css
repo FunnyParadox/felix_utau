@@ -23,12 +23,14 @@ body {
 	background-repeat: no-repeat; /* Prevent background from repeating */
 	background-attachment: fixed; /* Keep background fixed when scrolling */
 }
+
 .div_center
 {
 	position: relative;
 	left: 0;
 	top: 0;
 }
+
 .debug_border0 { background-color: #FF000040; }
 .debug_border1 { background-color: #00FF0040; }
 .debug_border2 { background-color: #0000FF40; }
@@ -45,6 +47,7 @@ body {
 .debug_borderD { background-color: #80FF8060; }
 .debug_borderE { background-color: #8080FF60; }
 .debug_borderF { background-color: #FFFFFF40; }
+
 .flex-container { position: relative; display: flex; }
 .flx_ali0 { align-items: start; }
 .flx_ali1 { align-items: end; }
@@ -60,6 +63,7 @@ body {
 .flx_arnd { justify-content: space-around; }
 .flx_btwn { justify-content: space-between; }
 .flx_even { justify-content: space-evenly; }
+
 .unselectable {
 	-webkit-user-select: none; /* For Safari */
 	-moz-user-select: none; /* For older Firefox */
